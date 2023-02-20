@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 
 //Load env vars
@@ -9,14 +10,19 @@ dotenv.config({path:'./config/config.env'});
 connectDB();
 
 //Route files
-const hospitals = require('./routes/hospitals')
+const hospitals = require('./routes/hospitals');
+const auth = require('./routes/auth');
 
 const app=express();
 
 //Body parser
 app.use(express.json());
 
+//Cookie parser
+app.use(cookieParser());
+
 app.use('/api/v1/hospitals',hospitals);
+app.use('/api/v1/auth',auth);
 
 // app.get('/',(req,res) => {
 //     res.status(200).json({success:"true", data:{id:1}});

@@ -2,7 +2,7 @@ const Hospital = require('../models/Hospital')
 
 //@desc     Get all hospitals
 //@route    GET /api/v1/hospitals 
-//access    Public
+//@access   Public
 exports.getHospitals= async (req,res,next)=>{
     try{
         const hospitals = await Hospital.find();
@@ -15,7 +15,7 @@ exports.getHospitals= async (req,res,next)=>{
 
 //@desc     Get single hospital
 //@route    GET /api/v1/hospitals/:id
-//access    Public
+//@access   Public
 exports.getHospital= async (req,res,next)=>{
     try{
         const hospital = await Hospital.findById(req.params.id);
@@ -31,7 +31,7 @@ exports.getHospital= async (req,res,next)=>{
 
 //@desc     Create new hospital
 //@route    POST /api/v1/hospitals 
-//access    Private
+//@access   Private
 exports.createHospital= async (req,res,next)=>{
     //console.log(req.body)
     const hospital = await Hospital.create(req.body); 
@@ -40,7 +40,7 @@ exports.createHospital= async (req,res,next)=>{
 
 //@desc     Update hospital
 //@route    PUT /api/v1/hospitals/:id 
-//access    Private
+//@access   Private
 exports.updateHospital= async (req,res,next)=>{
     try{
         const hospital = await Hospital.findByIdAndUpdate(req.params.id,req.body, {
@@ -61,7 +61,7 @@ exports.updateHospital= async (req,res,next)=>{
 
 //@desc     Delete hospital
 //@route    DELETE /api/v1/hospitals /:id
-//access    Private
+//@access   Private
 exports.deleteHospital = async (req,res,next)=>{
     try{
         const hospital = await Hospital.findByIdAndDelete(req.params.id);
